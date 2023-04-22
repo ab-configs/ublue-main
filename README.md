@@ -1,6 +1,6 @@
 # Main
 
-[![build-ublue](https://github.com/ublue-os/main/actions/workflows/build.yml/badge.svg)](https://github.com/ublue-os/main/actions/workflows/build.yml)
+[![build-ublue](https://github.com/ab-configs/main/actions/workflows/build.yml/badge.svg)](https://github.com/ab-configs/main/actions/workflows/build.yml)
 
 A common main image for all other uBlue images, with minimal (but important) adjustments to Fedora. <3  
 
@@ -21,10 +21,10 @@ You should be familiar with [image-based desktops](https://silverblue.fedoraproj
 - Adds the following packages to the base image:
   - Hardware acceleration and codecs
   - `distrobox` for terminal CLI and user package installation
-  - A selection of [udev rules and service units](https://github.com/ublue-os/config)
+  - A selection of [udev rules and service units](https://github.com/ab-configs/config)
   - [libratbag](https://github.com/libratbag/libratbag), to configure supported mice via [piper](https://github.com/libratbag/piper)
-  - Several pre-built [drivers/akmods](https://github.com/ublue-os/akmods)
-  - Various other tools: check out the [complete list of packages](https://github.com/ublue-os/main/blob/main/packages.json)
+  - Several pre-built [drivers/akmods](https://github.com/ab-configs/akmods)
+  - Various other tools: check out the [complete list of packages](https://github.com/ab-configs/main/blob/main/packages.json)
 - Sets automatic staging of updates for the system
 - Sets flatpaks to update twice a day
 - Everything else (desktop, artwork, etc) remains stock so you can use this as a good starting image
@@ -37,13 +37,13 @@ Want an application that is only available on Arch Linux *and* one that is only 
 
 Distrobox is very powerful, for example you can use to [host your entire development environment](https://github.com/89luca89/distrobox/blob/main/docs/posts/integrate_vscode_distrobox.md) completely separate from your host system. Or use it to run a [container for your virtual machines](https://github.com/89luca89/distrobox/blob/main/docs/posts/run_libvirt_in_distrobox.md).
 
-ublue-os/base-main is also very well suited for servers, and users are expected to make full use of `podman` to host containers running "typical" server software i.e. `nginx`, `caddy` and others. 
+ab-configs/base-main is also very well suited for servers, and users are expected to make full use of `podman` to host containers running "typical" server software i.e. `nginx`, `caddy` and others. 
 
 ## How to Install
 
-1. [Download the image you want](https://github.com/ublue-os/main/releases)
+1. [Download the image you want](https://github.com/ab-configs/main/releases)
 1. [Follow these instructions](https://ublue.it/installation)
-1. [File an issue](https://github.com/ublue-os/main/issues) if you find a problem
+1. [File an issue](https://github.com/ab-configs/main/issues) if you find a problem
 
 <details>
 <summary>To switch to another Image</summary>
@@ -57,34 +57,34 @@ To rebase an existing Silverblue/Kinoite machine to the latest release (38):
 
 **Silverblue (GNOME):**
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/silverblue-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/silverblue-main:38
 
 **Kinoite (KDE)**
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/kinoite-main:38
     
 **LXQt**
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/lxqt-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/lxqt-main:38
     
 **MATE**
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/mate-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/mate-main:38
     
 **Sericea (Sway)** 
 Recommended only for advanced users
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/sericea-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/sericea-main:38
 
 **Vauxite (XFCE)**
     
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/vauxite-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/vauxite-main:38
 
 **Base**
 
 Which does not come with any desktops or window managers:
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/base-main:38
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ab-configs/base-main:38
     
 </details>
 
@@ -92,7 +92,7 @@ Which does not come with any desktops or window managers:
 
 These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:
 
-    cosign verify --key cosign.pub ghcr.io/ublue-os/base
+    cosign verify --key cosign.pub ghcr.io/ab-configs/base
 
 If you're forking this repo you should [read the docs](https://docs.github.com/en/actions/security-guides/encrypted-secrets) on keeping secrets in github. You need to [generate a new keypair](https://docs.sigstore.dev/cosign/overview/) with cosign. The public key can be in your public repo (your users need it to check the signatures), and you can paste the private key in Settings -> Secrets -> Actions.
 
@@ -102,7 +102,7 @@ If you're forking this repo you should [read the docs](https://docs.github.com/e
 > 
 > Disabling automatic updates is an unsupported configuration. If you reconfigure updates, you MUST be on the latest image before opening any issues.
 
-With that said, you can individually disable which automatic update timers [ublue-os/config](https://github.com/ublue-os/config) provides with the following commands:
+With that said, you can individually disable which automatic update timers [ab-configs/config](https://github.com/ab-configs/config) provides with the following commands:
 
 * flatpak system: `sudo systemctl disable flatpak-system-update.timer`
 * flatpak user: `sudo systemctl --global disable flatpak-user-update.timer`
@@ -118,10 +118,10 @@ AutomaticUpdatePolicy=check
 
 See [the documentation](https://ublue.it/making-your-own/) on how use this image in your own projects.
 
-## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_badge.svg)](https://repography.com)
-[![Timeline graph](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_timeline.svg)](https://github.com/ublue-os/main/commits)
-[![Issue status graph](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_issues.svg)](https://github.com/ublue-os/main/issues)
-[![Pull request status graph](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_prs.svg)](https://github.com/ublue-os/main/pulls)
-[![Trending topics](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_words.svg)](https://github.com/ublue-os/main/commits)
-[![Top contributors](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_users.svg)](https://github.com/ublue-os/main/graphs/contributors)
-[![Activity map](https://images.repography.com/35181738/ublue-os/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_map.svg)](https://github.com/ublue-os/main/commits)
+## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_badge.svg)](https://repography.com)
+[![Timeline graph](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_timeline.svg)](https://github.com/ab-configs/main/commits)
+[![Issue status graph](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_issues.svg)](https://github.com/ab-configs/main/issues)
+[![Pull request status graph](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_prs.svg)](https://github.com/ab-configs/main/pulls)
+[![Trending topics](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_words.svg)](https://github.com/ab-configs/main/commits)
+[![Top contributors](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_users.svg)](https://github.com/ab-configs/main/graphs/contributors)
+[![Activity map](https://images.repography.com/35181738/ab-configs/main/recent-activity/xrA_PaNuNMQaiMXAgCjt1WHFLAbONeWxJABDiQSIMJI/sadhuTBbL8fbqM2jXKHWg-T1EsqHwZ2NlnlT6FB-e7Q_map.svg)](https://github.com/ab-configs/main/commits)
