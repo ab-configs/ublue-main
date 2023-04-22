@@ -274,5 +274,19 @@
         "exclude": {
             "all": []
         }
+    },
+    "39": {
+        "include": {
+            "all": [],
+            "mate": [
+                "f39-backgrounds-base",
+                "f39-backgrounds-extras-base",
+                "f39-backgrounds-extras-mate",
+                "f39-backgrounds-mate"
+            ]
+        },
+        "exclude": {
+            "all": []
+        }
     }
 }
