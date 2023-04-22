@@ -21,12 +21,12 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [silverblue]
-        major_version: [38, 39]
+        major_version: [38, rawhide]
         include:
           - major_version: 38
             is_latest_version: true
             is_stable_version: true
-          - major_version: 39
+          - major_version: rawhide
             is_latest_version: true
             is_stable_version: true
         exclude:
