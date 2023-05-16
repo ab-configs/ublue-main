@@ -26,7 +26,18 @@
                 "smartmontools",
                 "tmux",
                 "vim",
-                "zstd"
+                "zstd",
+                "evince",
+                "feh",
+                "net-tools",
+                "okular",
+                "powertop",
+                "strace",
+                "totem",
+                "quassel-client",
+                "foo2*",
+                "foomatic*",
+                "chromium"
             ],
             "silverblue": [
                 "adw-gtk3-theme",
