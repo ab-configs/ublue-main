@@ -1,19 +1,10 @@
 name: build-ublue
 on:
   pull_request:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - '**.txt'
+  merge_group:    
   schedule:
-    - cron: '20 20 * * *'  # 8:20pm everyday
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - '**.txt'
+    - cron: '0 7 * * *'  # 7 am everyday
+  workflow_dispatch:
 env:
     IMAGE_BASE_NAME: main
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
@@ -37,7 +28,7 @@ jobs:
             is_stable_version: true
           - major_version: rawhide
             is_latest_version: true
-            is_stable_version: false
+            is_stable_version: true
         exclude:
           # There is no Fedora 37 version of sericea
           # When F38 is added, sericea will automatically be built too
@@ -169,7 +160,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # Sign container
-      - uses: sigstore/cosign-installer@v3.0.2
+      - uses: sigstore/cosign-installer@v3.0.3
         if: github.event_name != 'pull_request'
 
       - name: Sign container image
