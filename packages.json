@@ -22,7 +22,18 @@
                 "pipewire-codec-aptx",
                 "smartmontools",
                 "vim",
-                "zstd"
+                "zstd",
+                "evince",
+                "feh",
+                "net-tools",
+                "okular",
+                "powertop",
+                "strace",
+                "totem",
+                "quassel-client",
+                "foo2*",
+                "foomatic*",
+                "chromium"
             ],
             "silverblue": [
                 "ffmpegthumbnailer",
