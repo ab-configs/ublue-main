@@ -26,9 +26,11 @@ jobs:
           - major_version: 38
             is_latest_version: true
             is_stable_version: true
+            major_version_akmods: 38
           - major_version: rawhide
             is_latest_version: true
             is_stable_version: true
+            major_version_akmods: 39
         exclude:
           # There is no Fedora 37 version of sericea
           # When F38 is added, sericea will automatically be built too
@@ -123,6 +125,7 @@ jobs:
             IMAGE_NAME=${{ matrix.image_name }}
             SOURCE_IMAGE=${{ env.SOURCE_IMAGE }}
             FEDORA_MAJOR_VERSION=${{ matrix.major_version }}
+            FEDORA_MAJOR_VERSION_AKMODS=${{ matrix.major_version_akmods }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
 
