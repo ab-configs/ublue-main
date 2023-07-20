@@ -14,6 +14,7 @@ ADD post-install.sh /tmp/post-install.sh
 ADD packages.json /tmp/packages.json
 
 COPY --from=ghcr.io/ublue-os/config:latest /rpms /tmp/rpms
+RUN touch /tmp/akmods-rpms
 # COPY --from=ghcr.io/ublue-os/akmods:${FEDORA_MAJOR_VERSION_AKMODS} /rpms /tmp/akmods-rpms
 
 RUN /tmp/build.sh
