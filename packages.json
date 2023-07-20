@@ -56,8 +56,7 @@
             ],
             "silverblue": [
                 "adw-gtk3-theme",
-                "gnome-tweaks",
-                "raw-thumbnailer"
+                "gnome-tweaks"
             ],
             "kinoite": [
                 "icoutils",
@@ -186,7 +185,6 @@
                 "pipewire-alsa",
                 "pipewire-pulseaudio",
                 "pluma",
-                "raw-thumbnailer",
                 "seahorse",
                 "seahorse-caja",
                 "setroubleshoot",
@@ -251,7 +249,11 @@
                 "f38-backgrounds-base",
                 "f38-backgrounds-extras-base",
                 "f38-backgrounds-extras-mate",
-                "f38-backgrounds-mate"
+                "f38-backgrounds-mate",
+                "raw-thumbnailer"
+            ],
+            "silverblue": [
+                "raw-thumbnailer"
             ],
             "kinoite":[
                 "xwaylandvideobridge"
