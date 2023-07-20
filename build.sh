@@ -24,6 +24,8 @@ rpm-ostree install \
     /tmp/rpms/*.rpm \
     fedora-repos-archive
 
+if [[ -d /tmp/akmods-rpms ]]; then
+
 rpm-ostree install /tmp/akmods-rpms/ublue-os/ublue-os-akmods-addons*.rpm
 for REPO in $(rpm -ql ublue-os-akmods-addons|grep ^"/etc"|grep repo$); do
     echo "akmods: enable default entry: ${REPO}"
@@ -40,6 +42,8 @@ for REPO in $(rpm -ql ublue-os-akmods-addons|grep ^"/etc"|grep repo$); do
     echo "akmods: disable per defaults: ${REPO}"
     sed -i 's@enabled=1@enabled=0@g' ${REPO}
 done
+
+fi
 
 if [[ "${#INCLUDED_PACKAGES[@]}" -gt 0 && "${#EXCLUDED_PACKAGES[@]}" -eq 0 ]]; then
     rpm-ostree install \
