@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [silverblue]
-        major_version: [38, 39]
+        major_version: [38, 39, rawhide]
         include:
           - major_version: 38
             is_latest_version: true
@@ -31,6 +31,10 @@ jobs:
             is_latest_version: true
             is_stable_version: true
             major_version_akmods: 39
+          - major_version: rawhide
+            is_latest_version: true
+            is_stable_version: true
+            major_version_akmods: rawhide
         exclude:
           # There is no Fedora 37 version of sericea
           # When F38 is added, sericea will automatically be built too
