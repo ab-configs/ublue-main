@@ -28,7 +28,6 @@
                 "openrgb-udev-rules",
                 "openssl",
                 "podman-compose",
-                "pipewire-codec-aptx",
                 "smartmontools",
                 "symlinks",
                 "tcpdump",
