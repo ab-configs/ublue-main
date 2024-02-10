@@ -22,10 +22,16 @@ COPY --from=ghcr.io/ublue-os/akmods:main-${FEDORA_MAJOR_VERSION} /rpms/ublue-os 
 
 RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-$(rpm -E %fedora)/ublue-os-staging-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_ublue-os_staging.repo && \
     wget https://copr.fedorainfracloud.org/coprs/kylegospo/oversteer/repo/fedora-$(rpm -E %fedora)/kylegospo-oversteer-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo_oversteer.repo && \
+    wget https://download.opensuse.org/repositories/hardware:/razer/Fedora_$(rpm -E %fedora)/hardware:razer.repo -O /etc/yum.repos.d/_opensuse_hardware_razer.repo && \
     /tmp/install.sh && \
     /tmp/post-install.sh && \
+    ## bootc 
+    wget https://copr.fedorainfracloud.org/coprs/rhcontainerbot/bootc/repo/fedora-"${FEDORA_MAJOR_VERSION}"/bootc-"${FEDORA_MAJOR_VERSION}".repo -O /etc/yum.repos.d/bootc.repo && \
+    rpm-ostree install bootc openrazer-meta && \
+    rm -f /etc/yum.repos.d/bootc.repo && \
     rm -f /etc/yum.repos.d/_copr_ublue-os_staging.repo && \
     rm -f /etc/yum.repos.d/_copr_kylegospo_oversteer.repo && \
+    rm -f /etc/yum.repos.d/_opensuse_hardware_razer.repo && \
     rm -rf /tmp/* /var/* && \
     if [[ "$IMAGE_NAME" == "base" ]]; then systemctl enable getty@tty1; fi && \
     ostree container commit && \
